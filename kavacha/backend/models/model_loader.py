@@ -31,7 +31,7 @@ def load_deepfake_classifier():
     model.classifier[1] = torch.nn.Linear(in_features, 2)
     weights_path = CACHE_DIR / "deepfake_clf.pth"
     if weights_path.exists():
-        model.load_state_dict(torch.load(weights_path, map_location='cpu'))
+        model.load_state_dict(torch.load(weights_path, map_location='cpu', weights_only=True))
     model.eval()
     return model
 
